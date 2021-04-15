@@ -3,7 +3,7 @@ include "connect.php";
 $page = $_GET['page'];
 $start = ((int)$page - 1) * 3;
 class job{
-	function job($id, $name, $idcompany,$id_recruiter, $img, $address, $idtype, $idprofession, $start_date, $end_date, $salary_min, $salary_max, $idarea, $experience, $number, $description, $requirement, $benefit, $status, $status_post,$note_reject, $company_name, $type_job )
+	function job($id, $name, $idcompany,$id_recruiter, $img, $address, $idtype, $idprofession, $start_date, $end_date, $salary_min, $salary_max, $idarea,$area, $experience, $number, $description, $requirement, $benefit, $status, $status_post,$note_reject, $company_name, $type_job )
 	{
 		$this->id = $id;
 		$this->name = $name;

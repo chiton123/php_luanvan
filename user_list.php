@@ -2,6 +2,7 @@
 include "connect.php";
 
 $job_id = $_POST['job_id'];
+
 // $job_id = 8;
 class user{
 	function user($id,$ap_id, $name, $birthday, $gender, $address, $email, $introduction, $position, $phone, $status, $mode){
@@ -19,6 +20,7 @@ class user{
 		$this->mode = $mode;
 	}
 }
+
 
 $query = "SELECT * FROM application a, user u WHERE a.ap_jobid = '$job_id' and a.ap_userid = u.u_id";
 $result = mysqli_query($conn ,$query);
