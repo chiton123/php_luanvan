@@ -3,7 +3,7 @@ include "connect.php";
 
 $email = $_POST['email'];
 // $pass = password_hash($_POST['pass'], PASSWORD_BCRYPT);
-// $email = 'teo@gmail.com';
+// $email = 'toan@gmail.com';
 
 $query = "SELECT * FROM user WHERE u_email = '$email'";
 

@@ -13,7 +13,14 @@ $query = "INSERT INTO candidate_experience values (null, '$iduser', '$company', 
 $result = mysqli_query($conn , $query);
 
 if($result){
-	echo "success";
+	$query1 = "SELECT * FROM candidate_experience where date_create = '$timestamp'";
+	$result1 = mysqli_query($conn, $query1);
+	if($result1){
+		$r = mysqli_fetch_array($result1);
+		echo $r['0'];
+	}else{
+		echo "fail";
+	}
 }else{
 	echo "fail";
 }
