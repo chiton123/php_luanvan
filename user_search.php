@@ -1,7 +1,11 @@
 <?php
 require "connect.php";
 $idposition = $_POST['idposition'];
-// $idposition = 1;
+$checkarea = $_POST['checkarea'];
+$area = $_POST['area'];
+
+// $idposition = 0;
+// $area = '(1,2,3)';
 class user{
 	function user($iduser,$idposition, $position, $idcv, $user_id_f, $username, $birthday, $gender, $address, 
 		$email, $introduction,$phone, $mode, $experience, $study, $idarea, $area){
@@ -60,9 +64,15 @@ $query = "SELECT * FROM user u, position p, cv c, candidate_area ca, area a WHER
 	and c.cv_iduser = u.u_id and c.cv_main = 1 and u.u_idposition = p.po_id and ca.ca_idarea = a.ar_id
 	and u.u_status = 0";
 $queryPosition = " and u.u_idposition = '$idposition'";
+
+$queryArea = " and ca.ca_idarea in " . $area;
 if($idposition != 0){
 	$query = $query . $queryPosition;
 }
+if($checkarea == 1){
+	$query = $query . $queryArea;
+}
+
 
 
 $data = mysqli_query($conn, $query);
