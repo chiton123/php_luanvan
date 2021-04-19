@@ -3,6 +3,8 @@ require "connect.php";
 $idposition = $_POST['idposition'];
 $checkarea = $_POST['checkarea'];
 $area = $_POST['area'];
+$checkjobskill = $_POST['checkjobskill'];
+$jobskill = $_POST['jobskill'];
 
 // $idposition = 0;
 // $area = '(1,2,3)';
@@ -60,19 +62,21 @@ function getStudy($iduser){
 
 
 $mang = array();
-$query = "SELECT * FROM user u, position p, cv c, candidate_area ca, area a WHERE u.u_id = ca.ca_iduser
-	and c.cv_iduser = u.u_id and c.cv_main = 1 and u.u_idposition = p.po_id and ca.ca_idarea = a.ar_id
-	and u.u_status = 0";
+$query = "SELECT * FROM user u, position p, cv c, candidate_area ca, area a, candidate_skill ck WHERE u.u_id = ca.ca_iduser and c.cv_iduser = u.u_id and c.cv_main = 1 and u.u_idposition = p.po_id and ca.ca_idarea = a.ar_id and u.u_status = 0";
 $queryPosition = " and u.u_idposition = '$idposition'";
 
 $queryArea = " and ca.ca_idarea in " . $area;
+
+$querySkill = " and ck.ck_iduser = u.u_id and ck.ck_idskill in " . $jobskill;
 if($idposition != 0){
 	$query = $query . $queryPosition;
 }
 if($checkarea == 1){
 	$query = $query . $queryArea;
 }
-
+if($checkjobskill == 1){
+	$query = $query . $querySkill;
+}
 
 
 $data = mysqli_query($conn, $query);
@@ -81,7 +85,7 @@ while($row = mysqli_fetch_assoc($data)){
 		$row['u_id'],
 		$row['u_idposition'],
 		$row['po_name'],
-		$row['cv_id'],
+		$row['cv_idcv'],
 		$row['u_id_firebase'],
 		$row['u_name'],
 		$row['u_birthday'],
