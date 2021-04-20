@@ -3,7 +3,29 @@ include "connect.php";
 // kind : 0 : thuc tap, 1: tu xa, 2: ban thoi gian, 3 toan thoi gian, 4 da ung tuyen, 5 quan tam, 6 moi nhat, 7 phu hop
 
 $kind = $_POST['kind'];
+// $kind = 7;
 $page = $_GET['page'];
+$checkarea = 0;
+$area = "";
+$checkskill = 0;
+$skill = "";
+$checkprofession = 0;
+$profession = "";
+if($kind == 7){
+	$checkarea = $_POST['checkarea'];
+	$area = $_POST['area'];
+	$checkskill = $_POST['checkskill'];
+	$skill = $_POST['skill'];
+	$checkprofession = $_POST['checkprofession'];
+	$profession = $_POST['profession'];
+
+	// $checkarea = 1;
+	// $area = '(59,62,63,5,7)';
+	// $checkskill = 1;
+	// $skill = '(1,2,3,4,5)';
+	// $checkprofession = 1;
+	// $profession = '(1,24,25)';
+}
 
 
 // $kind = 4;
@@ -45,12 +67,35 @@ class job{
 }
 $mang = array();
 $query = "SELECT * FROM job j, company c, area a, typeofwork t, experience e where j.j_idcompany = c.c_id and a.ar_id = j.j_idarea and t.t_id = j.j_idtype and j.j_experience = e.e_id and j.j_status_delete = 0 and j.j_status_post = 0";
+
+
 $queryToanTG  = " and t.t_id = 1";
 $queryBanTG   = " and t.t_id = 2";
 $queryThucTap = " and t.t_id = 3";
 $queryLamTuXa = " and t.t_id = 4";
 
 $queryMoiNhat = " order by j_id desc";
+
+$queryPhuHop = "SELECT * FROM job j, company c, area a, typeofwork t, experience e, job_skill jk where j.j_idcompany = c.c_id and a.ar_id = j.j_idarea and t.t_id = j.j_idtype and j.j_experience = e.e_id
+and j.j_status_delete = 0 and j.j_status_post = 0";
+
+// area
+if($checkarea == 1){
+	$queryArea = " and j.j_idarea in " . $area;
+	$queryPhuHop = $queryPhuHop . $queryArea;
+}
+// profession
+if($checkprofession == 1){
+	$queryProfession = " and j.j_idprofession in " . $profession;
+	$queryPhuHop = $queryPhuHop . $queryProfession;
+}
+// skill
+if($checkskill == 1){
+	$querySkill = " and jk.js_idjob = j.j_id and jk.js_idskill in " . $skill;
+	$queryPhuHop = $queryPhuHop . $querySkill;
+}
+
+
 if($kind == 0){
 	$query = $query . $queryThucTap;
 }
@@ -70,6 +115,10 @@ if($kind == 3){
 
 if($kind == 6){
 	$query = $query . $queryMoiNhat;
+}
+
+if($kind == 7){
+	$query = $queryPhuHop;
 }
 
 
