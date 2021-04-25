@@ -2,6 +2,7 @@
 include "connect.php";
 $name = $_POST['name'];
 $email = $_POST['email'];
+$uid = $_POST['uid'];
 // $pass = password_hash($_POST['pass'], PASSWORD_BCRYPT);
 
 // $name = 'ton122';
@@ -10,7 +11,7 @@ $email = $_POST['email'];
 
 $timestamp = date('Y-m-d H:i:S', time());
 
-$query = "INSERT INTO user (u_id,u_idposition, u_name,u_email, date_create, date_update) values (null,1, '$name','$email','$timestamp','$timestamp')";
+$query = "INSERT INTO user (u_id,u_idposition, u_id_firebase, u_name,u_email, date_create, date_update) values (null,1, '$uid', '$name','$email','$timestamp','$timestamp')";
 
 $result = mysqli_query($conn, $query);
 if($result){

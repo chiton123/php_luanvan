@@ -3,7 +3,7 @@ include "connect.php";
 
 $job_id = $_POST['job_id'];
 
-// $job_id = 8;
+// $job_id = 1;
 class user{
 	function user($id,$ap_id, $name, $birthday, $gender, $address, $email, $introduction, $position, $phone, $status, $mode){
 		$this->id = $id;
@@ -35,7 +35,7 @@ while($row = mysqli_fetch_assoc($result)){
 		$row['u_address'],
 		$row['u_email'],
 		$row['u_introduction'],
-		$row['u_position'],
+		$row['u_idposition'],
 		$row['u_phone'],
 		$row['u_status'],
 		$row['u_mode']
