@@ -2,7 +2,7 @@
 require "connect.php";
 
 $idjob = $_POST['idjob'];
-// $idjob = 36;
+// $idjob = 80;
 $document = 0;
 $newDocument = 0;
 $interview = 0;
@@ -10,14 +10,14 @@ $work = 0;
 $skip = 0;
 
 class job{
-	function job($id, $name, $idcompany, $img, $area, $idtype, $idprofession, $start_date, $end_date, $salary_min, $salary_max, $idarea, $experience, $number, $description, $requirement, $benefit, $status,$company_name, $type_job, $note_reject
+	function job($id, $name, $idcompany, $img, $address, $idtype, $idprofession, $start_date, $end_date, $salary_min, $salary_max, $idarea, $area, $experience, $number, $description, $requirement, $benefit, $status,$company_name, $type_job, $note_reject
 	,$document, $new_document, $interview, $work, $skip )
 	{
 		$this->id = $id;
 		$this->name = $name;
 		$this->idcompany = $idcompany;
 		$this->img = $img;
-		$this->area = $area;
+		$this->address = $address;
 		$this->idtype = $idtype;
 		$this->idprofession = $idprofession;
 		$this->start_date = $start_date;
@@ -25,6 +25,7 @@ class job{
 		$this->salary_min = $salary_min;
 		$this->salary_max = $salary_max;
 		$this->idarea = $idarea;
+		$this->area = $area;
 		$this->experience = $experience;
 		$this->number = $number;
 		$this->description = $description;
@@ -65,6 +66,7 @@ while($row = mysqli_fetch_assoc($data)){
 		$row['j_salary_min'],
 		$row['j_salary_max'],
 		$row['j_idarea'],
+		$row['ar_name'],
 		$row['e_name'],
 		$row['j_number'],
 		$row['j_description'],

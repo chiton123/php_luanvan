@@ -8,7 +8,8 @@ $newDocument = 0;
 $interview = 0;
 $work = 0;
 $skip = 0;
-// $idrecuiter = 4;
+// $idrecuiter = 3;
+// $status_post = 1;
 
 
 
