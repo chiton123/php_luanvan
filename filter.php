@@ -9,11 +9,11 @@ $min_salary = $_POST['min_salary'];
 $max_salary = $_POST['max_salary'];
 $idSalary = $_POST['idsalary'];
 
-// $idArea = 0;
+// $idArea = 63;
 // $idProfession = 0;
 // $idTypeWork = 0;
 // $idExperience = 0;
-// $idSalary = 6;
+// $idSalary = 0;
 // $min_salary = 12000000;
 // $max_salary = 15000000;
 $query = "SELECT * FROM job j, company c, area a, typeofwork t, experience e where j.j_idcompany = c.c_id and a.ar_id = j.j_idarea and t.t_id = j.j_idtype and j.j_experience = e.e_id and j.j_status_delete = 0 and j.j_status_post = 0";
@@ -48,14 +48,14 @@ if($idSalary != 0){
 	$query = $query . $querySa;
 }
 class job{
-	function job($id, $name, $idcompany,$id_recruiter, $img, $area, $idtype, $idprofession, $start_date, $end_date, $salary_min, $salary_max, $idarea, $experience, $number, $description, $requirement, $benefit, $status,$company_name, $type_job )
+	function job($id, $name, $idcompany,$id_recruiter, $img, $address, $idtype, $idprofession, $start_date, $end_date, $salary_min, $salary_max, $idarea, $area, $experience, $number, $description, $requirement, $benefit, $status,$company_name, $type_job )
 	{
 		$this->id = $id;
 		$this->name = $name;
 		$this->idcompany = $idcompany;
 		$this->id_recruiter = $id_recruiter;
 		$this->img = $img;
-		$this->area = $area;
+		$this->address = $address;
 		$this->idtype = $idtype;
 		$this->idprofession = $idprofession;
 		$this->start_date = $start_date;
@@ -63,6 +63,7 @@ class job{
 		$this->salary_min = $salary_min;
 		$this->salary_max = $salary_max;
 		$this->idarea = $idarea;
+		$this->area = $area;
 		$this->experience = $experience;
 		$this->number = $number;
 		$this->description = $description;
@@ -91,6 +92,7 @@ while($row = mysqli_fetch_assoc($data)){
 		$row['j_salary_min'],
 		$row['j_salary_max'],
 		$row['j_idarea'],
+		$row['ar_name'],
 		$row['e_name'],
 		$row['j_number'],
 		$row['j_description'],

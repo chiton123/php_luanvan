@@ -55,7 +55,6 @@ function getStudy($iduser){
 		while($row = mysqli_fetch_assoc($resutl1)){
 			$school = $school . $row['cs_school'] . " - " . $row['cs_major'] . ".";
 		}
-		
 	}
 	return $school;
 }

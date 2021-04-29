@@ -1,6 +1,6 @@
 <?php
 include "connect.php";
-// kind : 0 : thuc tap, 1: tu xa, 2: ban thoi gian, 3 toan thoi gian, 4 da ung tuyen, 5 quan tam, 6 moi nhat, 7 phu hop
+// kind : 0 : thuc tap, 1: tu xa, 2: ban thoi gian, 3 toan thoi gian, 4 da ung tuyen, 5 quan tam, 6 moi nhat, 7 phu hop, 8: search
 
 $kind = $_POST['kind'];
 // $kind = 7;
@@ -19,11 +19,11 @@ if($kind == 7){
 	$checkprofession = $_POST['checkprofession'];
 	$profession = $_POST['profession'];
 
-	// $checkarea = 1;
+	// $checkarea = 0;
 	// $area = '(59,62,63,5,7)';
 	// $checkskill = 1;
-	// $skill = '(1,2,3,4,5)';
-	// $checkprofession = 1;
+	// $skill = '(40,1)';
+	// $checkprofession = 0;
 	// $profession = '(1,24,25)';
 }
 
