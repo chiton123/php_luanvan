@@ -15,7 +15,7 @@ if(mysqli_num_rows($data) >0){
 
 	$status = $r['10'];
 	if($status == 1){
-		echo "fail";
+		echo "fail2";
 	}else {
 		echo $iduser;
 	}
