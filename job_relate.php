@@ -4,7 +4,8 @@ include "connect.php";
 $idprofession = $_POST['idprofession'];
 $jobid = $_POST['jobid'];
 // $idcompany = 1;
-
+// $idprofession = 25;
+// $jobid = 2;
 class job{
 	function job($id, $name, $idcompany,$id_recruiter, $img, $address, $idtype, $idprofession, $start_date, $end_date, $salary_min, $salary_max, $idarea, $area, $experience, $number, $description, $requirement, $benefit, $status,$company_name, $type_job )
 	{

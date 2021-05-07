@@ -2,7 +2,7 @@
 include "connect.php";
 $iduser = $_POST['iduser'];
 // $iduser = 33;
-// $position = "";
+
 class user{
 	function user($id,$idposition, $position, $name, $birthday, $gender, $address, $email, $introduction,$phone, $status, $mode){
 		$this->id = $id;
@@ -23,7 +23,7 @@ class user{
 // Lấy vị trí
 function getPosition($iduser){
 	global $conn;
-	$query1 = "SELECT * FROM user u, position p WHERE u.u_idposition = p.po_id";
+	$query1 = "SELECT * FROM user u, position p WHERE u.u_idposition = p.po_id and u.u_id = '$iduser'";
 	$resutl1 = mysqli_query($conn, $query1);
 	if(mysqli_num_rows($resutl1)){
 		$r = mysqli_fetch_array($resutl1);

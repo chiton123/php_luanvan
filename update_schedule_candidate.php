@@ -1,6 +1,6 @@
 <?php
 include "connect.php";
-
+// status : 0 chưa xác nhận, 1 đồng ý , 2 từ chối , 3 dời lịch pv
 $id_sche = $_POST['id_sche'];
 $note_candidate = $_POST['note_candidate'];
 $status = $_POST['status'];
