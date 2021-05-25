@@ -31,7 +31,7 @@ function getNumberJob($idcompany){
 	return $work;
 }
 
-$query = "SELECT * FROM company";
+$query = "SELECT * FROM company LIMIT 4";
 $data = mysqli_query($conn, $query);
 $mang = array();
 while($row = mysqli_fetch_assoc($data)){
